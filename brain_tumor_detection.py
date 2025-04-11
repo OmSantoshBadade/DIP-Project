@@ -2,12 +2,13 @@
 
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import os
-from tkinter import Tk, filedialog, Label, Button, Canvas, PhotoImage, messagebox
+import tkinter as tk
+from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 
 # -------------------- Image Preprocessing Functions --------------------
@@ -112,20 +113,20 @@ def launch_gui(model):
             messagebox.showerror("Error", f"Error processing image: {str(e)}")
 
     # Initialize GUI
-    root = Tk()
+    root = tk.Tk()
     root.title("Brain Tumor Detection")
     root.geometry("500x500")
 
-    upload_btn = Button(root, text="Upload MRI Image", command=upload_and_predict, font=("Arial", 14))
+    upload_btn = tk.Button(root, text="Upload MRI Image", command=upload_and_predict, font=("Arial", 14))
     upload_btn.pack(pady=20)
 
-    original_label = Label(root)
+    original_label = tk.Label(root)
     original_label.pack()
 
-    segmented_label = Label(root)
+    segmented_label = tk.Label(root)
     segmented_label.pack()
 
-    result_label = Label(root, text="", font=("Arial", 14))
+    result_label = tk.Label(root, text="", font=("Arial", 14))
     result_label.pack(pady=10)
 
     root.mainloop()
